@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+{% block css  %}
+<link rel="stylesheet" href="{% static 'styles/homepage/styles.css' %}" />
+<link rel="stylesheet" media="screen and (max-width: 1050px)" href="{% static 'styles/homepage/mobile.css' %}"/>
+{% endblock %}
+<div class="container">
+   <div class="welcome">
+      <h3 class="header">About me</h3>
+   </div>
+</div>
+<div class="bio-wrapper">
+   <div class="bio">
+      <img src="{% static 'images/profile-pic.jpg' %}" class="img" />
+      <ul>
+         <h5>bio</h5>
+         <li>Name: Anthony</li>
+         <li>Age: 32</li>
+         <li>Copenhagen <img
+            src="https://flagcdn.com/16x12/dk.png"
+            srcset="https://flagcdn.com/32x24/dk.png 2x,
+            https://flagcdn.com/48x36/dk.png 3x"
+            width="16"
+            height="12"
+            alt="Denmark"></li>
+         <li>Software Developer</li>
+      </ul>
+      <ul>
+         <h5>languages</h5>
+         <li>English (native)</li>
+         <li>Danish (proficient)</li>
+         <li>Slovenian (basic)</li>
+         <li>French (basic)</li>
+      </ul>
+   </div>
+   <hr>
+   <h3 class="header">Stack</h3>
+   <div>
+      <ul class="languages">
+         <li class="arrows"><</li>
+         <li><i class="devicon-html5-plain-wordmark colored icon"></i></li>
+         <li><i class="devicon-css3-plain-wordmark colored icon"></i></li>
+         <li><img class="python-logo" src="/media/homepage/python-logo.png" ></li>
+         <li><i class="devicon-django-plain-wordmark icon"></i></li>
+         <li><i class="devicon-react-original-wordmark colored icon"></i></li>
+         <li><i class="devicon-javascript-plain icon js colored"></i></li>
+         <li><img class="solidity-logo" src="/media/homepage/solidity-logo.png" ></li>
+         <li><i class="devicon-linux-plain colored icon"></i></li>
+         <li><i class="devicon-git-plain-wordmark colored icon"></i></li>
+         <li><i class="devicon-docker-plain-wordmark colored icon"></i></li>
+         <li><i class="devicon-amazonwebservices-plain-wordmark colored aws-icon"></i></li>
+         <li class="arrows">/></li>
+      </ul>
+   </div>
+   <hr>
+   <h3 class="header">A bit more about me...</h3>
+   <div class="homepage-text">
+      <p>Hello, I am a full stack software/web developer from Copenhagen, Denmark currently looking for work.  My primary languages are Python and JavaScript.  I also am skilled in HTML & CSS.  I am a self-taught programmer and have been learning since 2019.</p>
+      <p>I started with Python in order to write some scripts to assist me with some menial tasks when I was working in customer service. I then learned the Django framework and built my first website <a href="www.slolearner.net">slolearner.net</a> (currently under reconstruction)
+         a website to help people (like myself) who are trying to learn the Slovenian language.
+      </p>
+      <p>Whilst using Django I improved my Vanilla JS, jQuery, HTML & CSS skills.  Recently I have been using React with Django Rest API/AWS Amplify on the backend.</p>
+
+      <p>I have deployed all my past projects using <a href="www.pythonanywhere.com">pythonanywhere</a>, but have been studying AWS and Docker for the past few months.
+      I use Git version control and am comfortable with the Linux command line and using SSH. </p>
+      <p>I use this website to host and show some of my web apps. Check out <a href="{% url 'portfolio:portfolio'%}">my work</a> for a detailed list of all my web apps.</p>
+      <p>Please <a href="{% url 'homePage:contact'%}">contact me </a> if you are looking to build a website or need help with hosting or deployment. I'll get back to you ASAP</p>
+   </div>
+</div>
+{%  endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+{% block content %}
+{% load static %}
+{% block css  %}
+<link rel="stylesheet" href="{% static 'styles/sportsApp/styles.css' %}">
+<link rel="stylesheet" media="screen and (max-width: 1050px)" href="{% static '/styles/sportsApp/mobile.css' %}"/>
+{% endblock %}
+<div class="container wrapper">
+   <h1 class="header">pick a team</h1>
+   <div class="logo-wrapper">
+      {% for team in teams %}
+      <div class="logo-background">
+         <a href="{% url 'sportsApp:teamDetail' team.team_id %}">
+         {% if team.league_id == 4391 %}
+         <img class="panthers-logo" src="{{ team.logo.url }}" ></a>
+         {% else %}
+         <img class="team-logo" src="{{ team.logo.url }}" ></a>
+         {% endif %}
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+.project a {
+	color: var(--text-link)
+}
+
+.wrapper {
+	text-align: center;
+}
+
+.main-header {
+	margin-top: 2rem;
+}
+
+.counter {
+	font-family: 'Kalam', cursive;
+}
+
+.project {
+	padding: 1rem;
+	background-color: var(--main-bg-color);
+	margin-bottom: 2rem;
+	text-align: left;
+	border-radius: 5px;
+	border: var(--main-border);
+}
+
+.icon-list {
+	list-style: none;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.icons {
+	font-size: 5rem;
+}
+
+.devicon-django-plain {
+	color: #178a17ec;
+	font-size: 8rem;
+}
+
+.devicon-css3-plain-wordmark {
+	color: #779ECB;
+}
+
+.devicon-html5-plain-wordmark {
+	color: #FE6B64;
+}
+
+.devicon-bootstrap-plain-wordmark {
+	color: #6f42c1;
+	font-size: 4.7rem;
+}
+
+.devicon-jquery-plain-wordmark {
+	color: #0769ad;
+}

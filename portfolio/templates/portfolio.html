@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'styles/portfolio/styles.css' %}" />
+<link rel="stylesheet" media="screen and (max-width: 1050px)" href="{% static '/styles/portfolio/mobile.css' %}"/>
+{% endblock %}
+<div class="wrapper container">
+   <h1 class="main-header">Projects</h1>
+   <div class="projects">
+      {% for project in projects %}
+      <div class="project">
+         <h4 class="counter">#{{ forloop.counter }}</h4>
+         <h3 class="header">{{ project.name }}</h3>
+         <hr>
+         <ul class="key-points-list">
+            {% for point in project.key_points %}
+            <li>{{ point|safe }}</li>
+            {% endfor %}
+         </ul>
+         <hr />
+         <h5 class="header">description</h5>
+         <p>{{ project.description|safe }}</p>
+         <hr />
+         <h5 class="header lan-and-tech">languages + technologies</h5>
+         <ul class="icon-list">
+            {% for icon in project.language_icons %}
+            <li class="icons">{{ icon|safe }}</li>
+            {% endfor %}
+         </ul>
+         <ul class="icon-list">
+            {% for icon in project.deployment_icons %}
+            <li class="icons">{{ icon|safe }}</li>
+            {% endfor %}
+         </ul>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}

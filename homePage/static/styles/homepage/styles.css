@@ -1,0 +1,112 @@
+.welcome {
+	margin-top: 2rem;
+	text-align: center;
+}
+
+.bio-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.header {
+	margin-bottom: 2rem;
+}
+
+hr {
+	color: black;
+}
+
+.bio {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	border: var(--main-border);
+	border-radius: 5px;
+	background-color: var(--main-bg-color);
+	margin-bottom: 2rem;
+	padding: 2.7rem;
+}
+
+.icon {
+	font-size: 5rem;
+}
+
+.aws-icon {
+	font-size: 7rem;
+	margin-bottom: 1rem;
+}
+
+.bio a {
+	text-decoration: none;
+}
+
+.languages {
+	display: flex;
+	justify-content: space-evenly;
+	list-style: none;
+}
+
+.languages li img {
+	
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+
+}
+.languages li {
+	margin-right: 1rem;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+
+}
+
+.bio ul {
+	list-style: none;
+}
+
+.img {
+	max-height: 12rem;
+	max-width: auto;
+}
+
+.bio-info ul {
+	margin-top: 1rem;
+}
+
+.homepage-text {
+	padding: 1rem;
+	border: var(--main-border);
+	background-color: var(--main-bg-color);
+	border-radius: 5px;
+	width: 50%;
+}
+
+.homepage-text a {
+	color: var(--text-link);
+}
+
+.devicon-django-plain-wordmark {
+	color: #178a17ec;
+}
+
+.arrows {
+	font-size: 3.5rem;
+}
+
+.solidity-logo {
+	width: 8rem;
+	height: auto;
+	margin: 0 -2rem 0rem -1.1rem;
+}
+
+.python-logo {
+	width: 5rem;
+	height: auto;
+}
+

@@ -1,0 +1,67 @@
+.wrapper {
+	text-align: center;
+	width: 30%;
+}
+
+.header {
+	margin-top: 2rem;
+}
+
+.contact-form-wrapper {
+	border: var(--main-border);
+	border-radius: 5px;
+}
+
+.contact-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	list-style: none;
+	max-height: 42.2rem;
+	background-color: var(--main-bg-color);
+	;
+	text-align: center;
+	padding: 2rem;
+}
+
+.contact-form * {
+	margin-bottom: 1rem;
+}
+
+.btn {
+	width: 6rem;
+	background-color: black;
+	color: white;
+}
+
+.btn:hover {
+	color: white;
+}
+
+label {
+	display: none;
+}
+
+.links {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	padding: 2rem;
+}
+
+.links a {
+	text-decoration: none;
+}
+
+.devicon-linkedin-plain-wordmark {
+	font-size: 8.2rem;
+	margin-right: 1rem;
+}
+
+.devicon-github-original-wordmark {
+	font-size: 5rem;
+}
+
+.message {
+	padding: 2rem;
+}

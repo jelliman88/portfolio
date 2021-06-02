@@ -1,0 +1,42 @@
+.flex-top-row {
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.top-logo {
+	order: -1;
+}
+
+.flex-top-row .info-column .top-button {
+	margin-left: -.5rem;
+}
+
+.flex-row {
+	display: block;
+	margin: auto;
+}
+
+.standings-header {
+	margin-left: -.5rem !important;
+}
+
+.standings-column {
+	max-width: 10rem;
+	margin-left: 1rem;
+}
+
+.adjusted-paper {
+	margin-top: 4rem;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	width: 21rem;
+	border-radius: 5px;
+	padding: .5rem;
+	margin-left: -1rem !important;
+	margin-right: 1rem;
+}
+
+.table_wrapper {
+	margin-left: 0;
+}
+

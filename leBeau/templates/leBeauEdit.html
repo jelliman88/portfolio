@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+{% block css  %}
+<link rel="stylesheet" href="{% static 'styles/leBeauEdit/styles.css' %}">
+<link rel="stylesheet" media="screen and (max-width: 1050px)" href="{% static 'styles/leBeauEdit/mobile.css' %}"/>
+{% endblock %}
+<input type="hidden" value="{{ LEBEAU_CODE }}" id="lebeau_code">
+<div class="wrapper container">
+   <h1 class="pageHeader">Edit</h1>
+   <hr>
+   <form method="POST" id="form" class="edit-form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-inputs" id="form-inputs">
+         {{ form.as_p }}
+      </div>
+      <input type="text" placeholder="code" id="code" required>
+      <hr>
+      <p id="tags">
+         {% for tag in local_tags %}
+         <span class="tag" onclick="tagDelete(this)">{{ tag }}</span>
+         {% endfor %}
+      </p>
+      <input type="submit" value="update" class="btn btn-edit" onclick="return onSave()"></input>
+      <input type="submit" value="delete" class="btn btn-delete" name="_delete" onclick="return confirmDelete()"></input>
+   </form>
+   <div class="searchbar-wrapper container">
+      <input type="hidden" id="submitted-tag" name="submitted-tag" value="hello">
+      <input type="text" id="searchbar" class="searchbar" placeholder="search tags...">
+      <div id="autocom-box" class="autocom-box">
+      </div>
+   </div>
+   <button class="btn btn-add" onclick="addTagMobile()">add tag</button>
+</div>
+<script src="{% static 'scripts/leBeauEdit/main.js' %}"></script>
+<script src="{% static 'scripts/leBeauEdit/jquery.js' %}"></script>
+{%  endblock %}

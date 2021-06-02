@@ -1,0 +1,53 @@
+
+.home-page-links {
+    display: none;
+    
+}
+
+.navbar #show-button {
+    color: black;
+    font-size: 2rem;
+    display: block;
+    
+}
+
+.slide-in-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 50vh;
+    width: 40%;
+    margin-left: 100%;
+    display: none;
+    background: black;
+    z-index: 1;
+    border-radius: 5px;
+   
+    
+}
+
+.slide-in-links {
+    list-style: none;
+    display: unset;
+}
+
+
+
+.slide-in-links li {
+    
+    margin-top: 2rem;
+    margin-left: 1rem;
+    
+}
+
+.slide-in-links .link a {
+    color: white;
+}
+
+.hide-button {
+    font-size: 2rem;
+    margin-left: 60%;
+    margin-top: 1.9rem;
+    color: white;
+    
+}

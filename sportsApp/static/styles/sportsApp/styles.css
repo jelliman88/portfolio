@@ -1,0 +1,48 @@
+.wrapper {
+	text-align: center;
+}
+
+.header {
+	margin-top: 2rem;
+}
+
+.logo-wrapper {
+	align-items: center;
+	display: flex;
+	justify-content: space-evenly;
+	padding: .5rem;
+	background-color: var(--main-bg-color);
+	border-radius: 5px;
+	border: var(--main-border);
+}
+
+.team-logo {
+	width: 10rem;
+	transition: .3s;
+	padding: 1rem;
+	cursor: pointer;
+	height: auto;
+}
+
+.logo-background {
+	min-height: 12rem;
+	min-width: 14rem;
+}
+
+.team-logo:hover {
+	transition: .3s;
+	width: 11rem;
+}
+
+.panthers-logo {
+	width: 13rem;
+	transition: .3s;
+	padding: 1rem;
+	cursor: pointer;
+	height: auto;
+}
+
+.panthers-logo:hover {
+	transition: .3s;
+	width: 14rem;
+}

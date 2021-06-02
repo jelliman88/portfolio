@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap');
+
+
+:root {
+    --main-bg-color: white;
+    --main-border: 4px solid black;
+    --text-link: #0db7ed;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+.website-name a {
+      text-decoration: none;
+}
+
+.home-page-links {
+    display: flex; 
+    justify-content: space-between;
+    list-style: none;
+}
+
+.home-page-links a {
+    text-decoration: none;
+}
+
+
+
+main {
+    min-height: 80vh;
+}
+
+.slide-in-links {
+   display: none;
+}
+ 
+ .link {
+     color: rgb(79, 86, 87);
+     font-size: 1rem;
+     margin-right: 2rem;
+ }
+
+ .navbar .show-button {
+    display: none;
+}
+
+#show-button {
+    display: none;
+}
+
+#hide-button {
+    display: none;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+
+ 

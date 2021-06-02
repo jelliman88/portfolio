@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+      <link rel="stylesheet" href="{% static '/styles/base.css' %}">
+      <link rel="stylesheet" media="screen and (max-width: 1050px)" href="{% static '/styles/mobile.css' %}"/>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.11.0/devicon.min.css">
+      <script
+         src="https://code.jquery.com/jquery-3.6.0.min.js"
+         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+         crossorigin="anonymous"></script>
+      <script
+         src="https://kit.fontawesome.com/ab91e6acdd.js"
+         crossorigin="anonymous"></script>
+      <script  src="{% static '/scripts/main.js' %}"></script>
+      <title>anthonyjelliman.com</title>
+      {% block css  %}
+      {% endblock %}
+   </head>
+   <body>
+      <nav class="navbar navbar-light bg-light">
+         <div class="container">
+            <h5 class="website-name"><a href="{% url 'homePage:homePage' %}">anthonyjelliman.com</a></h5>
+            <ul class="home-page-links" id="home-page-links" >
+               <li class="link"><a href="{% url 'portfolio:portfolio' %}">My work</a></li>
+               <li class="link"><a href="{% url 'homePage:contact' %}">contact</a></li>
+               <li class="link"><a href="{% url 'sportsApp:sportsApp' %}">Sports</a></li>
+               <li class="link"><a href="{% url 'leBeau:leBeau' 'all' '-purchase_date' 'both' %}">Le Beau</a></li>
+            </ul>
+            <i class="fas fa-bars show-button" id="show-button" onclick="showMenu()"></i>
+         </div>
+      </nav>
+      </div>
+      <div class="slide-in-menu" id="slide-in-menu">
+         <div class="white-menu"><i class="fas fa-bars hide-button" id="hide-button" onclick="hideMenu()"></i></div>
+         <ul class="slide-in-links"  >
+            <li class="link"><a href="{% url 'portfolio:portfolio' %}">MY WORK</a></li>
+            <li class="link"><a href="{% url 'homePage:contact' %}">CONTACT</a></li>
+            <li class="link"><a href="{% url 'sportsApp:sportsApp' %}">SPORTS</a></li>
+            <li class="link"><a href="{% url 'leBeau:leBeau' 'all' '-purchase_date' 'both' %}">LE BEAU</a></li>
+         </ul>
+      </div>
+      <main>
+         {% block content %}
+         {%  endblock %}
+      </main>
+      <footer>
+         copyright &copy; thetone.dk
+      </footer>
+   </body>
+</html>

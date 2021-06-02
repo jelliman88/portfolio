@@ -1,0 +1,14 @@
+.icon-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-right: 2rem;
+}
+.key-points-list {
+    margin-left: -2rem;
+}
+
+.lan-and-tech {
+    text-align: center;
+}

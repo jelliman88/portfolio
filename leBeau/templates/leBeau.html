@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+{% block css  %}
+<link rel="stylesheet" href="{% static 'styles/leBeau/styles.css' %}">
+<link rel="stylesheet" media="screen and (max-width: 1050px)" href="{% static 'styles/leBeau/mobile.css' %}"/>
+{% endblock %}
+<input type="hidden" value="{{ LEBEAU_CODE }}" id="lebeau_code">
+<div class="wrapper container">
+   <h1 class="pageHeader">Le beau</h1>
+   <button class="btn btn-black tag-form-show-button" id="lebeau-show-button" onclick="showForm()">Add</button>
+   <div id="leBeauForm">
+      <div class="btn btn-link" id="lebeau-hide-button" onclick="hideForm()">CLOSE</div>
+      <form method="POST">
+         <div class="add-item-form">
+            {% csrf_token %}
+            {{ form }}
+            <input type="text" placeholder="code" id="code" required>
+         </div>
+         <br>
+         <button type="submit" class="btn btn-black" onclick="return onSave()">Add</button>
+      </form>
+   </div>
+   <button class="btn btn-black tag-form-show-button" id="tag-form-show-button" onclick="return showTagForm()">Filter</button>
+   <form method="POST" id="tag-form" class="tag-form">
+      <div class="btn btn-link" id="lebeau-hide-button" onclick="hideTagForm()">CLOSE</div>
+      {% csrf_token %}
+      <ul class="search-options" >
+         <div class="sort-by-box">
+            <span><label for="sort-by">SORT BY</label></span>
+            <span>
+               <select name="filter">
+                  <option value="purchase_date">DATE</option>
+                  <option value="purchase_price">PAID</option>
+                  <option value="selling_price">SOLD</option>
+                  <option value="profit">PROFIT</option>
+               </select>
+            </span>
+            <span>
+               <select name="direction">
+                  <option value="-">HIGH TO LOW</option>
+                  <option value="">LOW TO HIGH</option>
+               </select>
+            </span>
+            <span><input name="status" type="radio" value="True"><span> SOLD</span></span>
+            <span class="unsold-input"><input name="status"type="radio" value="False"><span> UNSOLD</span></span>
+            <span><input name="status"type="radio" value="both" checked><span> ALL</span></span>
+         </div>
+      </ul>
+      <div><button type="submit" class="btn search-button" >search</button></div>
+      <div class="searchbar-wrapper container">
+         <input type="text" id="searchbar" class="searchbar" name='submitted-tag' spellcheck="false" placeholder="search tags...">
+         <div id="autocom-box" class="autocom-box">
+         </div>
+   </form>
+   </div>
+   <div class="items-wrapper">
+      <div class="keyword">
+         <h3>{{ urlTag }}</h3>
+         <br>
+         <span>#{{ totals.0 }} </span>
+      </div>
+      <div><a href="{% url 'leBeau:leBeau' 'all' '-purchase_date' 'both' %}"class="btn btn-link" >clear</a></li></div>
+      <div class="totals">
+         <ul>
+            <li class="bought total">{{ totals.1 }}kr</li>
+            <li class="sold total">{{ totals.2 }}kr</li>
+            {% if totals.3 < 0 %}
+            <li class="loss total">{{ totals.3 }}kr</li>
+            {% else %}
+            <li class="profit total">{{ totals.3 }}kr</li>
+            {% endif %}
+         </ul>
+      </div>
+      <div class="items">
+         {% for obj in data %}
+         <a href="{% url 'leBeau:leBeauEdit' obj.id %}">
+            <div class="item">
+               <div>{{obj.item|upper}}</div>
+               {% if obj.thumbnail %}
+               <div class="thumbnail-container container"> <img class="thumbnail" src="{{ obj.thumbnail.url }}" ></div>
+               {% else %}
+               <div> <img class="thumbnail-container container" src="/media/lebeau/thumbnails/default.png" ></div>
+               {% endif %}
+               <div >
+                  <ul class="item-total">
+                     <li class="bought">{{ obj.purchase_price }} kr</li>
+                     {% if obj.selling_price %}
+                     <li class="sold">{{ obj.selling_price }} kr</li>
+                     <li class="profit">{{ obj.profit }} kr</li>
+                     {% else %}
+                     <li class="sold">UNSOLD</li>
+                     <li class="profit">N/A</li>
+                     {% endif %}
+                  </ul>
+               </div>
+         </a>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+</div>
+<script type="text/javascript" src="{% static 'scripts/leBeau/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'scripts/leBeau/main.js' %}"></script>
+{%  endblock %}

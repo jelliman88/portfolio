@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% block css  %}
+<link rel="stylesheet" href="{% static 'styles/teamDetail/styles.css' %}">
+<link rel="stylesheet" media="screen and (max-width: 1050px)" href="{% static 'styles/teamDetail/mobile.css' %}"/>
+{% endblock %}
+<div class="wrapper container">
+   <div class="flex-top-row">
+      <div class="info-column">
+         <button class="btn top-button" onclick="showAllScores()">show scores</button>
+      </div>
+      <div class="info-column top-logo">
+         <form method=POST>
+            {% csrf_token %}
+            <button class="logo-button" type="submit"><img class="team-logo" src="{{ logo }}" ></button>
+            <input type="hidden" value="{{ league_id }}" name="league_id">
+         </form>
+      </div>
+      <div class="info-column">
+         <button class="btn top-button" onclick="worthWatching()">worth watching?</button>
+      </div>
+   </div>
+   <div class="last_updated">Click the badge to update. <br/> Last updated: {{ last_updated }}</div>
+   <div class="main">
+      <div class="flex-row container">
+         <div class="info-column">
+            <div class="paper">
+               <ul >
+                  <li>
+                     <h3>LAST 5</h3>
+                  </li>
+                  {% if not last_5 %}
+                  <h4>NO DATA</h4>
+                  {% else %}
+                  {% for game in last_5 %}
+                  <div class="game-info">
+                     <div><span class="game-date">{{ game.dateEvent }}</span></div>
+                     <span class="scores-wrapper">
+                        <div> <span id="home-team-{{ forloop.counter }}" class="home-team">{{ game.strHomeTeam|upper }}</span>
+                           <span class="score" id="home-score-{{ forloop.counter }}" onclick="showScore(this.id)" >{{ game.intHomeScore }}</span>
+                           -
+                           <span class="score" id="away-score-{{ forloop.counter }}" onclick="showScore(this.id)" > {{ game.intAwayScore }}</span>
+                     </span>
+                     <span id="away-team-{{ forloop.counter }}" class="away-team" >{{ game.strAwayTeam|upper }}</span> </div>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+               </ul>
+            </div>
+         </div>
+         <div class="info-column">
+            <div class="paper">
+               <ul >
+                  <li>
+                     <h3>NEXT 5</h3>
+                  </li>
+                  {% if not next_5 %}
+                  <h4>NO DATA</h4>
+                  {% else %}
+                  {% for game in next_5 %}
+                  <div class="game-info">
+                     <div><span class="game-date">{{ game.dateEvent }} {{ game.strTime }} </span></div>
+                     <div> {{ game.strAwayTeam|upper }} @ {{ game.strHomeTeam|upper }}  </div>
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+               </ul>
+            </div>
+         </div>
+         <input type="hidden" id="league-id" value="{{ league_id }}">
+         <!--MLB-->
+         {% if league_id == 4424 %}
+         <div class="standings-column paper">
+            <ul>
+               <li>
+                  <h3 class="standings-header">standings</h3>
+               </li>
+               <li class="mlb">
+                  <script type="text/javascript" src="https://widgets.sports-reference.com/wg.fcgi?script=br_standings&amp;params=br_standings_lg:NL,br_standings_div:C,br_standings_format:TLA,br_standings_css:0&amp;css=1"></script>
+               </li>
+            </ul>
+         </div>
+         <!--NBA-->
+         {% elif league_id == 4387 %}
+         <div class="standings-column paper">
+            <ul>
+               <li>
+                  <h3 class="standings-header">standings</h3>
+               </li>
+               <li class="nba">
+                  <script type="text/javascript" src="https://widgets.sports-reference.com/wg.fcgi?script=bbr_standings&amp;params=bbr_standings_conf:W,bbr_standings_format:TLA,bbr_standings_css:0&amp;css=1"></script>
+               </li>
+            </ul>
+         </div>
+         <!--NHL-->
+         {% elif league_id == 4380 %}
+         <div class="adjusted-standings-column adjusted-paper">
+            <ul>
+               <li>
+                  <h3 class="adjusted-standings-header">standings</h3>
+               </li>
+               <li class="nhl">
+                  <script type="text/javascript" src="https://widgets.sports-reference.com/wg.fcgi?script=hr_standings&amp;params=hr_standings_format:TLA,hr_standings_css:0&amp;css=1"></script>
+               </li>
+            </ul>
+         </div>
+         <!--NFL-->
+         {% elif league_id == 4391 %}
+         <div class="adjusted-standings-column adjusted-paper">
+            <ul>
+               <li>
+                  <h3 class="adjusted-standings-header">standings</h3>
+               </li>
+               <li class="nfl">
+                  <script type="text/javascript" src="https://widgets.sports-reference.com/wg.fcgi?script=pfr_standings&amp;params=pfr_standings_conf:NFC,pfr_standings_div:South,pfr_standings_format:TLA,pfr_standings_css:0&amp;css=1"></script>
+               </li>
+            </ul>
+         </div>
+         {% else %}
+         <!--EPL-->
+         <div class="epl-standings-column epl-paper">
+            <h3 class="epl-standings-header">Standings</h3>
+            <table class="epl-table">
+               <thead>
+                  <tr>
+                     <th>Pos</th>
+                     <th>Team</th>
+                     <th>P</th>
+                     <th>W</th>
+                     <th>L</th>
+                     <th>D</th>
+                     <th>Pts</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for team in standings %}
+                  <tr id="{{ team.name }}">
+                     <th> {{ forloop.counter }}  </th>
+                     <th> {{ team.name }} </th>
+                     <th> {{ team.played}} </th>
+                     <th> {{ team.win }} </th>
+                     <th> {{ team.loss }} </th>
+                     <th> {{ team.draw }} </th>
+                     <th> {{ team.total }} </th>
+                  </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+         </div>
+         {% endif %}
+      </div>
+   </div>
+</div>
+<script src="{% static 'scripts/sportsDetail/main.js' %}"></script>
+{%  endblock %}

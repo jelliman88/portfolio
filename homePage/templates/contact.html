@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+{% block css  %}
+<link rel="stylesheet" href="{% static 'styles/contact/styles.css' %}" />
+<link rel="stylesheet" media="screen and (max-width: 1050px)" href="{% static 'styles/contact/mobile.css' %}"/>
+{% endblock %}
+<div class="container wrapper">
+   <h1 class="header">Contact</h1>
+   <div class="links">
+      <a href="https://www.linkedin.com/in/anthony-jelliman-900999a2/"><i class="devicon-linkedin-plain-wordmark colored icon"></i></a>
+      <a href="https://github.com/jelliman88"><i class="devicon-github-original-wordmark colored icon"></i></a>
+   </div>
+   <div class="contact-form-wrapper">
+      {% if msg %}
+      <h1 class="message">{{ msg }}</h1>
+      {% else %}
+      <form method="POST" class="contact-form">
+         {% csrf_token %}
+         {{ form }}
+         <input type="submit" value="send" class="btn">
+      </form>
+      {% endif %}
+   </div>
+</div>
+{%  endblock %}

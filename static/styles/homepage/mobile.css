@@ -1,0 +1,31 @@
+.bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.img {
+    margin-bottom: 1rem;
+}
+
+.languages {
+    flex-wrap: wrap;
+    margin-right: 2rem;
+}
+
+.languages li {
+    margin-bottom: 1rem;
+}
+
+.devicon-amazonwebservices-plain-wordmark {
+    margin-left: 2.5rem;
+}
+
+.homepage-text {
+
+    width: 90%;
+}
+
+.arrows {
+    display: none;
+}

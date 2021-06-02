@@ -1,0 +1,18 @@
+.edit-form p input{
+    width: 100%;
+}
+
+#id_thumbnail {
+    width: 50%;
+    margin-left: -1%;
+}
+
+.autocom-box {
+    width: 45%;
+    margin-left: -1rem;
+}
+
+.image-field-clone {
+    margin-left: 25%;
+}
+
